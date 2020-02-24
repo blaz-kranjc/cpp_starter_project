@@ -1,0 +1,10 @@
+option(ENABLE_IWYU "Enable include file analysis with IWYU" OFF)
+
+if(ENABLE_IWYU)
+  find_program(IWYU NAMES include-what-you-use iwyu)
+  if(IWYU)
+    set(CMAKE_CXX_INCLUDE_WHAT_YOU_USE ${IWYU})
+  else()
+    message(SEND_ERROR "IWYU requested but executable not found")
+  endif()
+endif()
